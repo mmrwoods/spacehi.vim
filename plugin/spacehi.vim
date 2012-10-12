@@ -11,7 +11,7 @@
 "
 " Section: Documentation {{{1
 "
-" This plugin will highlight tabs and trailing spaces on a line, with the
+" This plugin will highlight tabs, nbsps and trailing spaces on a line, with the
 " ability to toggle the highlighting on and off. Using highlighting to
 " illuminate these characters is preferrable to using listchars and set list
 " because it allows you to copy from the vim window without getting shrapnel
@@ -28,6 +28,7 @@
 "
 "       g:spacehi_spacecolor
 "       g:spacehi_tabcolor
+"       g:spacehi_nbspcolor
 "
 " The defaults can be found in the "Default Global Vars" section below.
 "
@@ -61,6 +62,11 @@ if !exists("g:spacehi_spacecolor")
     let g:spacehi_spacecolor="ctermfg=4 cterm=underline"
     let g:spacehi_spacecolor=g:spacehi_spacecolor . " guifg=blue gui=underline"
 endif
+if !exists("g:spacehi_nbspcolor")
+    " highlight nbsps with red underline
+    let g:spacehi_nbspcolor="ctermfg=1 cterm=underline"
+    let g:spacehi_nbspcolor=g:spacehi_nbspcolor . " guifg=red gui=underline"
+endif
 
 " Section: Functions {{{1
 " Function: s:SpaceHi() {{{2
@@ -74,6 +80,10 @@ function! s:SpaceHi()
     syntax match spacehiTrailingSpace /\s\+$/ containedin=ALL
     execute("highlight spacehiTrailingSpace " . g:spacehi_spacecolor)
 
+    " highlight nbsps
+    syntax match spacehiNbsp /\%d160/ containedin=ALL
+    execute("highlight spacehiNbsp " . g:spacehi_nbspcolor)
+
     let b:spacehi = 1
 endfunction
 
@@ -82,6 +92,7 @@ endfunction
 function! s:NoSpaceHi()
     syntax clear spacehiTab
     syntax clear spacehiTrailingSpace
+    syntax clear spacehiNbsp
     let b:spacehi = 0
 endfunction
 
