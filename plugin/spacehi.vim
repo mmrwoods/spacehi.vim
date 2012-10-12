@@ -1,11 +1,10 @@
 " vim600: set foldmethod=marker:
-" $Id: spacehi.vim,v 1.3 2002/10/11 20:37:13 laz Exp $
 "
+" Version:      1.4
 " Description:  Per buffer, togglable syntax highlighting of tabs and trailing
 "               spaces. 	 	 	 	 	 	 
-" Author:       Adam Lazur <adam@lazur.org>
-" Last Change:  $Date: 2002/10/11 20:37:13 $
-" URL:          http://adam.lazur.org/vim/spacehi.vim
+" Author:       Adam Lazur <adam@lazur.org>, extended by Jonathan Palardy
+" URL:          https://github.com/jpalardy/spacehi.vim
 " License:      Redistribution and use of this file, with or without
 "               modification, are permitted without restriction.
 "
