@@ -54,18 +54,15 @@ let loaded_spacehi=1
 " Section: Default Global Vars {{{1
 if !exists("g:spacehi_tabcolor")
     " highlight tabs with red underline
-    let g:spacehi_tabcolor="ctermfg=1 cterm=underline"
-    let g:spacehi_tabcolor=g:spacehi_tabcolor . " guifg=red gui=underline"
+    let g:spacehi_tabcolor="ctermfg=White ctermbg=Red guifg=White guibg=Red"
 endif
 if !exists("g:spacehi_spacecolor")
     " highlight trailing spaces in blue underline
-    let g:spacehi_spacecolor="ctermfg=4 cterm=underline"
-    let g:spacehi_spacecolor=g:spacehi_spacecolor . " guifg=blue gui=underline"
+    let g:spacehi_spacecolor="ctermfg=Black ctermbg=Yellow guifg=Blue guibg=Yellow"
 endif
 if !exists("g:spacehi_nbspcolor")
     " highlight nbsps with red underline
-    let g:spacehi_nbspcolor="ctermfg=1 cterm=underline"
-    let g:spacehi_nbspcolor=g:spacehi_nbspcolor . " guifg=red gui=underline"
+    let g:spacehi_nbspcolor="ctermfg=White ctermbg=Red guifg=White guibg=Red"
 endif
 
 " Section: Functions {{{1
