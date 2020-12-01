@@ -64,6 +64,29 @@ if !exists("g:spacehi_nbspcolor")
     let g:spacehi_nbspcolor="ctermfg=White ctermbg=Red guifg=White guibg=Red"
 endif
 
+" Section: Unicode whitespace pattern {{{1
+let s:unicode_pattern='['
+let s:unicode_pattern.='\u00A0' " NO-BREAK SPACE
+let s:unicode_pattern.='\u1680' " OGHAM SPACE MARK
+let s:unicode_pattern.='\u180E' " MONGOLIAN VOWEL SEPARATOR
+let s:unicode_pattern.='\u2000' " EN QUAD
+let s:unicode_pattern.='\u2001' " EM QUAD
+let s:unicode_pattern.='\u2002' " EN SPACE
+let s:unicode_pattern.='\u2003' " EM SPACE
+let s:unicode_pattern.='\u2004' " THREE-PER-EM SPACE
+let s:unicode_pattern.='\u2005' " FOUR-PER-EM SPACE
+let s:unicode_pattern.='\u2006' " SIX-PER-EM SPACE
+let s:unicode_pattern.='\u2007' " FIGURE SPACE
+let s:unicode_pattern.='\u2008' " PUNCTUATION SPACE
+let s:unicode_pattern.='\u2009' " THIN SPACE
+let s:unicode_pattern.='\u200A' " HAIR SPACE
+let s:unicode_pattern.='\u200B' " ZERO WIDTH SPACE
+let s:unicode_pattern.='\u202F' " NARROW NO-BREAK SPACE
+let s:unicode_pattern.='\u205F' " MEDIUM MATHEMATICAL SPACE
+let s:unicode_pattern.='\u3000' " IDEOGRAPHIC SPACE
+let s:unicode_pattern.='\uFEFF' " ZERO WIDTH NO-BREAK SPACE
+let s:unicode_pattern.=']'
+
 " Section: Functions {{{1
 " Function: s:SpaceHi() {{{2
 " Turn on highlighting of spaces and tabs
@@ -77,7 +100,7 @@ function! s:SpaceHi()
     execute("highlight spacehiTrailingSpace " . g:spacehi_spacecolor)
 
     " highlight nbsps
-    syntax match spacehiNbsp /[\d160]/ containedin=ALL
+    execute('syntax match spacehiNbsp /'. s:unicode_pattern .'/ containedin=ALL')
     execute("highlight spacehiNbsp " . g:spacehi_nbspcolor)
 
     let b:spacehi = 1
