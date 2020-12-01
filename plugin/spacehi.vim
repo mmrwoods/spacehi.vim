@@ -77,7 +77,7 @@ function! s:SpaceHi()
     execute("highlight spacehiTrailingSpace " . g:spacehi_spacecolor)
 
     " highlight nbsps
-    syntax match spacehiNbsp /\%d160/ containedin=ALL
+    syntax match spacehiNbsp /[\d160]/ containedin=ALL
     execute("highlight spacehiNbsp " . g:spacehi_nbspcolor)
 
     let b:spacehi = 1
