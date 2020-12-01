@@ -2,7 +2,7 @@
 "
 " Version:      1.4
 " Description:  Per buffer, togglable syntax highlighting of tabs and trailing
-"               spaces. 	 	 	 	 	 	 
+"               spaces.
 " Author:       Adam Lazur <adam@lazur.org>, extended by Jonathan Palardy
 " URL:          https://github.com/jpalardy/spacehi.vim
 " License:      Redistribution and use of this file, with or without
@@ -31,7 +31,7 @@
 "
 " The defaults can be found in the "Default Global Vars" section below.
 "
-" You can give a list of filetypes to exclude 
+" You can give a list of filetypes to exclude
 "
 " If you want to highlight tabs and trailing spaces by default for every file
 " that is syntax highlighted, you can add the following to your vimrc:
