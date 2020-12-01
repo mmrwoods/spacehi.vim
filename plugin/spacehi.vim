@@ -59,9 +59,13 @@ if !exists("g:spacehi_spacecolor")
     " highlight trailing spaces in blue underline
     let g:spacehi_spacecolor="ctermfg=Black ctermbg=Yellow guifg=Blue guibg=Yellow"
 endif
-if !exists("g:spacehi_nbspcolor")
-    " highlight nbsps with red underline
-    let g:spacehi_nbspcolor="ctermfg=White ctermbg=Red guifg=White guibg=Red"
+if exists("g:spacehi_nbspcolor") && !exists("g:spacehi_unicodecolor")
+    " backwards compatibility with deprecated variable
+    let g:spacehi_unicodecolor=g:spacehi_nbspcolor
+endif
+if !exists("g:spacehi_unicodecolor")
+    " highlight unicode whitespace with red background
+    let g:spacehi_unicodecolor="ctermfg=White ctermbg=Red guifg=White guibg=Red"
 endif
 
 " Section: Unicode whitespace pattern {{{1
@@ -99,9 +103,9 @@ function! s:SpaceHi()
     syntax match spacehiTrailingSpace /\s\+$/ containedin=ALL
     execute("highlight spacehiTrailingSpace " . g:spacehi_spacecolor)
 
-    " highlight nbsps
-    execute('syntax match spacehiNbsp /'. s:unicode_pattern .'/ containedin=ALL')
-    execute("highlight spacehiNbsp " . g:spacehi_nbspcolor)
+    " highlight unicode whitespace
+    execute('syntax match spacehiUnicode /'. s:unicode_pattern .'/ containedin=ALL')
+    execute("highlight spacehiUnicode " . g:spacehi_unicodecolor)
 
     let b:spacehi = 1
 endfunction
@@ -111,7 +115,7 @@ endfunction
 function! s:NoSpaceHi()
     syntax clear spacehiTab
     syntax clear spacehiTrailingSpace
-    syntax clear spacehiNbsp
+    syntax clear spacehiUnicode
     let b:spacehi = 0
 endfunction
 
