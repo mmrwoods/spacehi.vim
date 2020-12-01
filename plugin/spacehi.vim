@@ -51,21 +51,22 @@ endif
 let loaded_spacehi=1
 
 " Section: Default Global Vars {{{1
+if !exists("g:spacehi_color")
+    " highlight unwanted whitespace with red background
+    let g:spacehi_color="ctermfg=White ctermbg=Red guifg=White guibg=Red"
+endif
 if !exists("g:spacehi_tabcolor")
-    " highlight tabs with red underline
-    let g:spacehi_tabcolor="ctermfg=White ctermbg=Red guifg=White guibg=Red"
+    let g:spacehi_tabcolor=g:spacehi_color
 endif
 if !exists("g:spacehi_spacecolor")
-    " highlight trailing spaces in blue underline
-    let g:spacehi_spacecolor="ctermfg=Black ctermbg=Yellow guifg=Blue guibg=Yellow"
+    let g:spacehi_spacecolor=g:spacehi_color
 endif
 if exists("g:spacehi_nbspcolor") && !exists("g:spacehi_unicodecolor")
     " backwards compatibility with deprecated variable
     let g:spacehi_unicodecolor=g:spacehi_nbspcolor
 endif
 if !exists("g:spacehi_unicodecolor")
-    " highlight unicode whitespace with red background
-    let g:spacehi_unicodecolor="ctermfg=White ctermbg=Red guifg=White guibg=Red"
+    let g:spacehi_unicodecolor=g:spacehi_color
 endif
 
 " Section: Unicode whitespace pattern {{{1
